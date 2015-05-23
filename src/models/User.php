@@ -177,7 +177,8 @@ class User extends ActiveRecord implements IdentityInterface
             ->viaTable('{{%user_has_events}}', ['userId' => 'id']);
     }
 
-    public function loadAvatar() {
+    public function loadAvatar()
+    {
         if (!$this->email) {
             return;
         }
@@ -186,6 +187,12 @@ class User extends ActiveRecord implements IdentityInterface
         $grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($defaultAvatar) . "&s=" . $size;
 
         $this->avatar = $grav_url;
-        $this->save();
     }
+
+    public function beforeSave($insert)
+    {
+        $this->loadAvatar();
+        return parent::beforeSave($insert);
+    }
+
 }
