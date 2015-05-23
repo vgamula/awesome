@@ -9,7 +9,7 @@ use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Json;
-use yii\web\User;
+use app\models\User;
 
 /**
  * This is the model class for table "{{%events}}".
