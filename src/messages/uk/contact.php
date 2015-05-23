@@ -17,11 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Submit' => 'Відправити',
-    'Body' => 'Зміст',
-    'Contact' => 'Контактна форма',
-    'E-mail' => 'E-mail',
-    'Name' => 'Ваше Ім’я',
-    'Subject' => 'Тема',
-    'Verification Code' => 'Код перевірки',
+    'Body' => '',
+    'Contact' => '',
+    'E-mail' => '',
+    'Name' => '',
+    'Subject' => '',
+    'Submit' => '',
+    'Verification Code' => '',
 ];

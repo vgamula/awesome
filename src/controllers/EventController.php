@@ -164,7 +164,9 @@ class EventController extends BaseController
         $event = Event::findOne($id);
         /** @var User $user */
         $user = Yii::$app->user->identity;
-        if (!isset($event) || UserHasEvents::find(['eventId' => $event->id, 'userId' => $user->id])->exists()) {
+        /** @var UserHasEvents $relation */
+        $relation = UserHasEvents::findOne(['eventId' => $event->id, 'userId' => $user->id]);
+        if (!isset($event) || isset($relation)) {
             throw new NotFoundHttpException(Yii::t('app', 'Page not found'));
         }
         $relation = new UserHasEvents(['eventId' => $event->id, 'userId' => $user->id]);

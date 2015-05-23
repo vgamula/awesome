@@ -17,14 +17,5 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Add' => 'Збільшити кількість',
-    'Amount' => 'Кількість',
-    'Cart is empty' => 'Корзина порожня',
-    'Clear Cart' => 'Очистити корзину',
-    'Cost' => 'Вартість',
-    'Make Order' => 'Зробити замовлення',
-    'Price' => 'Ціна',
-    'Product' => 'Товар',
-    'Sub' => 'Зменшити кількість',
-    'Amount: ' => 'Кількість: ',
+    'Add new photo' => '',
 ];
