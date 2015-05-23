@@ -53,8 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div id="map">
 </div>
 
-<button type="button" onclick="gCalendarExport()">Export Event</button>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
