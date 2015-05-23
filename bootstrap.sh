@@ -34,8 +34,8 @@ a2enmod rewrite
 
 # load data
 cd /www/awesome && \
-    php yii migrate --interactive=0 #&& \
-#    php yii fixture/load User Project Topic --interactive=0
+    php yii migrate --interactive=0 && \
+    php yii fixture/load User Event UserHasEvents --interactive=0
 
 
 (crontab -l && echo "0 2 * * * php /www/awesome/yii schedule") | crontab -
