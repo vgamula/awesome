@@ -45,12 +45,12 @@ AppAsset::register($this);
                 ['label' => Yii::t('app', 'Events'), 'url' => ['/event']],
                 ['label' => Yii::t('app', 'Users'), 'url' => ['/user']],
             ]],
+            ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
             Yii::$app->user->isGuest ?
                 ['label' => FA::icon('sign-in') . ' ' . Yii::t('app', 'Login'), 'url' => ['/site/login']] :
                 ['label' => FA::icon('sign-out') . ' ' . Yii::t('app', 'Logout ({user})', ['user' => Yii::$app->user->identity->username]),
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']],
-            ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
         ],
     ]);
     NavBar::end();

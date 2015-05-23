@@ -82,3 +82,11 @@ ul.breadcrumb {
 .popular {
   margin-top: 50px;
 }
+
+
+/** Button style */
+.btn {
+  border-radius: 2px !important;
+  border: none !important;
+  transition: all .2s ease-in;
+}

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\BaseController;
 use app\models\Event;
 use app\models\EventSearch;
 use app\models\User;
@@ -9,18 +10,18 @@ use app\models\UserHasEvents;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 
 /**
  * EventController implements the CRUD actions for Event model.
  */
-class EventController extends Controller
+class EventController extends BaseController
 {
     public function behaviors()
     {
-        return [
+        return  ArrayHelper::merge(parent::behaviors(),[
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -29,16 +30,16 @@ class EventController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'update', 'index'],
+                'only' => ['create', 'update', 'index', 'subscribe', 'unsubscribe'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'update', 'index'],
+                        'actions' => ['create', 'update', 'index', 'subscribe', 'unsubscribe'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
             ],
-        ];
+        ]);
     }
 
     /**
