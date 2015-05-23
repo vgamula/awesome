@@ -48,3 +48,12 @@ ul.breadcrumb {
   background-color: white;
   border: none;
 }
+
+
+.page-header {
+  margin-top: 0 !important;
+}
+
+.page-header h1 {
+  margin-top: 10px !important;
+}
