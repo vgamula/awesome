@@ -26,17 +26,12 @@ class Formatter extends \yii\i18n\Formatter
         if ($value === null) {
             return $this->nullDisplay;
         }
-        return Html::a(Html::img($value), $value, ['rel' => 'fancybox']);
+        return Html::a(Html::img($value,['class' => 'img-thumbnail']), $value, ['rel' => 'fancybox']);
     }
 
     public function asMoney($value, $decimals = null, $options = [], $textOptions = [])
     {
         return parent::asDecimal($value, $decimals, $options, $textOptions) . ' ' . Yii::t('app', 'UAH');
-    }
-
-    public function asQuantity($value, $options = [], $textOptions = [])
-    {
-        return parent::asInteger($value, $options, $textOptions) . ' ' . Yii::t('app', 'pcs.');
     }
 
     public function asReadMore($value, $config = null)

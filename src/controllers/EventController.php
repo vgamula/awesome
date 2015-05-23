@@ -2,14 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\Event;
+use app\models\EventSearch;
 use app\models\User;
 use app\models\UserHasEvents;
 use Yii;
-use app\models\Event;
-use app\models\EventSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 
 /**
  * EventController implements the CRUD actions for Event model.
@@ -23,6 +25,17 @@ class EventController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'index'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'update', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -75,15 +88,18 @@ class EventController extends Controller
     }
 
     /**
-     * Updates an existing Event model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
+        if (!$model->userIsOwner()) {
+            throw new ForbiddenHttpException();
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -94,21 +110,26 @@ class EventController extends Controller
     }
 
     /**
-     * Deletes an existing Event model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return \yii\web\Response
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     * @throws \Exception
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if (!$model->userIsOwner()) {
+            throw new ForbiddenHttpException();
+        }
+        $model->delete();
 
         return $this->redirect(['index']);
     }
 
     public function actionExport()
     {
-      return $this->render('export');
+        return $this->render('export');
     }
 
     /**

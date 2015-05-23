@@ -32,6 +32,7 @@ if (empty($events)) {
             [
                 'label' => Yii::t('app', 'Events'),
                 'value' => $events,
+                'format' => 'raw',
             ]
         ],
     ]) ?>

@@ -9,6 +9,6 @@ use yii\console\Controller;
 class ScheduleController extends Controller {
  
     public function actionIndex() {
-        // send notifications to users
+        // send notifications about events
     }
 }
