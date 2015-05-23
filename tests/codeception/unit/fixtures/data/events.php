@@ -12,6 +12,7 @@ return [
         'createdAt' => 1432394119,
         'updatedAt' => 1432394119,
         'placeName' => 'Ciklum',
+        'status' => 1,
     ],
     [
         'name' => 'New Year',
@@ -24,6 +25,7 @@ return [
         'createdAt' => 1432394119,
         'updatedAt' => 1432394119,
         'placeName' => 'All places in the world',
+        'status' => 1,
     ],
     [
         'name' => 'Super Event',
@@ -36,5 +38,6 @@ return [
         'createdAt' => 1432394119,
         'updatedAt' => 1432394119,
         'placeName' => 'Somewhere',
+        'status' => 1,
     ],
 ];
