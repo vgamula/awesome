@@ -5,9 +5,6 @@
 <div>
     <h1><?= $event->title ?></h1>
     <p>
-        Hi, <?= $model->username ?>
-    </p>
-    <p>
         Don't forget about upcoming event: <?= $event->title ?>.
     </p>
     <p>Start: <?= Yii::$app->formatter->asDatetime($event->start) ?></p>
