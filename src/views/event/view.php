@@ -41,9 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'onclick' => "app.gCalendarExport('{$googleId}', {$model->getJsonData()})",
         ]) ?>
         <?php if (!$model->userIsSubscriber()): ?>
-            <?= Html::a(Yii::t('app', 'I go'), ['subscribe', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+            <?= Html::a(Yii::t('app', 'Subscribe'), ['subscribe', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?php else: ?>
-            <?= Html::a(Yii::t('app', 'I don\'t go'), ['unsubscribe', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+            <?= Html::a(Yii::t('app', 'Unsubscribe'), ['unsubscribe', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
         <?php endif ?>
     </p>
 
