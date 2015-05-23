@@ -24,6 +24,8 @@ class m150523_092944_create_events_table extends Migration
             'placeName' => Schema::TYPE_STRING,
             'visible' => Schema::TYPE_SMALLINT,
             'status' => Schema::TYPE_SMALLINT,
+            'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
     }

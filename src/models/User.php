@@ -100,13 +100,12 @@ class User extends ActiveRecord implements IdentityInterface
      * @return User
      * @throws ErrorException
      */
-    public static function findByEAuth($service)
+    public static function findByEAuth($service, $serviceName)
     {
         if (!$service->getIsAuthenticated()) {
             throw new ErrorException('EAuth user should be authenticated before creating identity.');
         }
 
-        $serviceName = $service->getServiceName();
         $serviceId = $service->getId();
         $fieldName = $serviceName . 'Id';
         $user = self::findOne([$fieldName => $serviceId]);
@@ -128,17 +127,17 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getAuthKey()
     {
-        return $this->authKey;
+        throw new NotSupportedException();
     }
 
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        throw new NotSupportedException();
     }
 
-    public function validatePassword($password)
+    public function validatePassword()
     {
-        return $this->password === $password;
+        throw new NotSupportedException();
     }
 
     /**

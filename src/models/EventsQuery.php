@@ -23,7 +23,7 @@ class EventsQuery extends ActiveQuery
         if (\Yii::$app->user->isGuest) {
             $this->andWhere(['visible' => Event::VISIBLE_PUBLIC]);
         }else{
-            //$this->andWhere([]);
+            //$this->andWhere([]);@TODO
         }
         return $this;
     }
