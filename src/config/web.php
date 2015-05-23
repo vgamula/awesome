@@ -41,8 +41,8 @@ $config = [
                 'facebook' => [
                     // register your app here: https://developers.facebook.com/apps/
                     'class' => 'nodge\eauth\services\FacebookOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
+                    'clientId' => '1838151016410078',
+                    'clientSecret' => 'e25d510672c8a1acff94d42569f1ec5a',
                 ],
                 'twitter' => [
                     // register your app here: https://dev.twitter.com/apps/new
