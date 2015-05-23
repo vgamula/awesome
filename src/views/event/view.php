@@ -7,6 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Event */
 
 $this->registerJsFile('https://apis.google.com/js/client.js?onload=checkAuth');
+$this->registerJsFile('https://maps.googleapis.com/maps/api/js?callback=initialize');
 $this->registerJsFile('/js/gCalendar.js');
 
 $this->title = $model->name;
@@ -44,4 +45,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
+<div id="map" style="width: 300px; height: 300px;">
+</div>
+
 <button type="button" onclick="gCalendarExport()">Export Event</button>
+
+<script type="text/javascript">
+    function initialize(){
+        var centerLatLng = new google.maps.LatLng(<?= $model->lat ?>, <?= $model->lng ?>);
+        var mapProp = {
+            center: centerLatLng,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = window.map = new google.maps.Map(document.getElementById("map"), mapProp);
+        marker = new google.maps.Marker({
+            position: centerLatLng,
+            map: map,
+            draggable: false,
+        });
+    };
+</script>

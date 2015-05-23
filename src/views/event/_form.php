@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
 /* @var $form yii\widgets\ActiveForm */
+$this->registerJsFile('https://maps.googleapis.com/maps/api/js?callback=initialize');
 ?>
 
 <div class="event-form">
@@ -48,7 +49,6 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script type="text/javascript">
         function setPosition(marker, pos, map) {
             marker.setMap(null);
@@ -92,9 +92,6 @@ use yii\widgets\ActiveForm;
             }
             <?php endif ?>
         };
-        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
-
 
 </div>
