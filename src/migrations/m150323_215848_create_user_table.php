@@ -15,8 +15,7 @@ class m150323_215848_create_user_table extends Migration
         }
         $this->createTable($this->tableName, [
             'id' => Schema::TYPE_PK,
-            'firstName' => Schema::TYPE_STRING . ' NULL',
-            'lastName' => Schema::TYPE_STRING . ' NULL',
+            'username' => Schema::TYPE_STRING . ' NULL',
             'facebookId' => Schema::TYPE_STRING . ' NULL',
             'twitterId' => Schema::TYPE_STRING . ' NULL',
             'googleId' => Schema::TYPE_STRING . ' NULL',
