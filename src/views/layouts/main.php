@@ -41,21 +41,16 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => FA::icon('home') . ' ' . Yii::t('app', 'Home'), 'url' => ['/site/index']],
-            ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
-            ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
-            ['label' => Yii::t('app', 'Administration'), 'visible' => !Yii::$app->user->isGuest, 'items' => [
-                ['label' => Yii::t('app', 'Orders'), 'url' => ['/orders/order']],
-                ['label' => Yii::t('app', 'Products'), 'url' => ['/catalog/product']],
-                ['label' => Yii::t('app', 'Categories'), 'url' => ['/catalog/category']],
-                ['label' => Yii::t('app', 'Vendors'), 'url' => ['/catalog/vendor']],
+            ['label' => Yii::t('app', 'Profile'), 'visible' => !Yii::$app->user->isGuest, 'items' => [
+                ['label' => Yii::t('app', 'Events'), 'url' => ['/event']],
                 ['label' => Yii::t('app', 'Users'), 'url' => ['/users']],
-                ['label' => Yii::t('app', 'Settings'), 'url' => ['/settings']],
             ]],
             Yii::$app->user->isGuest ?
                 ['label' => FA::icon('sign-in') . ' ' . Yii::t('app', 'Login'), 'url' => ['/site/login']] :
                 ['label' => FA::icon('sign-out') . ' ' . Yii::t('app', 'Logout ({user})', ['user' => Yii::$app->user->identity->username]),
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']],
+            ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
         ],
     ]);
     NavBar::end();
