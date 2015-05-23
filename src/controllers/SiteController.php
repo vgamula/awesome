@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\BaseController;
 use app\models\ContactForm;
 use app\models\Event;
 use app\models\EventSearch;
@@ -12,13 +13,13 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
+use yii\helpers\ArrayHelper;
 
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     public function behaviors()
     {
-        return [
+        return ArrayHelper::merge(parent::behaviors(),[
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
@@ -41,7 +42,7 @@ class SiteController extends Controller
                 'class' => ControllerBehavior::className(),
                 'only' => array('login'),
             ),
-        ];
+        ]);
     }
 
     public function actions()
@@ -132,9 +133,9 @@ class SiteController extends Controller
 
     public function actionSetEmail()
     {
+        /** @var User $model */
         $model = Yii::$app->getUser()->identity;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->loadAvatar();
             return $this->redirect('index');
         } else {
             return $this->render('addEmail', [
