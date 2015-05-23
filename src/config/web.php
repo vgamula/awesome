@@ -47,8 +47,8 @@ $config = [
                 'twitter' => [
                     // register your app here: https://dev.twitter.com/apps/new
                     'class' => 'nodge\eauth\services\TwitterOAuth1Service',
-                    'key' => '',
-                    'secret' => '',
+                    'key' => 'tZ3MaR9dlwD4S8iXIrM7zdvtd',
+                    'secret' => 'j6SK0NzqTvOjvlqTFtheIGDezsnJQY3xZu4nPOUASWCDnFGC0i',
                 ]
             ],
         ],
