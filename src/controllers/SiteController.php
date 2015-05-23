@@ -6,7 +6,6 @@ use app\models\catalog\Category;
 use app\models\catalog\Product;
 use app\models\catalog\Vendor;
 use app\models\ContactForm;
-use app\models\LoginForm;
 use app\models\User;
 use nodge\eauth\ErrorException;
 use Yii;
@@ -36,6 +35,11 @@ class SiteController extends Controller
                     'logout' => ['post'],
                 ],
             ],
+            'eauth' => array(
+                // required to disable csrf validation on OpenID requests
+                'class' => \nodge\eauth\openid\ControllerBehavior::className(),
+                'only' => array('login'),
+            ),
         ];
     }
 
@@ -44,10 +48,6 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -78,14 +78,7 @@ class SiteController extends Controller
                 $eauth->redirect($eauth->getCancelUrl());
             }
         }
-        $model = new LoginForm();
-        if ($model->load($_POST) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', array(
-                'model' => $model,
-            ));
-        }
+        return $this->render('login');
     }
 
     public function actionLogout()

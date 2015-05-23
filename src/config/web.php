@@ -31,7 +31,7 @@ $config = [
             'cache' => false,
             'cacheExpire' => 0,
             'services' => [
-                'google_oauth' => [
+                'google' => [
                     // register your app here: https://code.google.com/apis/console/
                     'class' => 'nodge\eauth\services\GoogleOAuth2Service',
                     'clientId' => '723383549848-a2988ciq9d1jsie29v79seui32trsbko.apps.googleusercontent.com',
@@ -99,6 +99,9 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                'login/<service:google|facebook|twitter>' => 'site/login',
+            ],
         ],
         'db' => require(__DIR__ . '/db.php'),
         'cart' => [

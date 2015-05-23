@@ -32,8 +32,8 @@ class User extends Object implements IdentityInterface
     );
     public static function findIdentity($id)
     {
-        if (Yii::$app->getSession()->has('user-'.$id)) {
-            return new self(Yii::$app->getSession()->get('user-'.$id));
+        if (\Yii::$app->getSession()->has('user-'.$id)) {
+            return new self(\Yii::$app->getSession()->get('user-'.$id));
         }
         else {
             return isset(self::$users[$id]) ? new self(self::$users[$id]) : null;

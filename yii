@@ -8,14 +8,19 @@
  * @license http://www.yiiframework.com/license/
  */
 
-defined('YII_DEBUG') or define('YII_DEBUG', true);
+
+require(__DIR__ . '/vendor/autoload.php');
+require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
+
+Dotenv::load(__DIR__);
+Dotenv::required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'YII_DEBUG', 'YII_ENV']);
+
+defined('YII_DEBUG') or define('YII_DEBUG', getenv('YII_DEBUG'));
+defined('YII_ENV_DEV') or define('YII_ENV_DEV', getenv('YII_ENV') == 'dev');
 
 // fcgi doesn't have STDIN and STDOUT defined by default
 defined('STDIN') or define('STDIN', fopen('php://stdin', 'r'));
 defined('STDOUT') or define('STDOUT', fopen('php://stdout', 'w'));
-
-require(__DIR__ . '/vendor/autoload.php');
-require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
 
 $config = require(__DIR__ . '/src/config/console.php');
 
