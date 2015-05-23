@@ -100,6 +100,8 @@ class Event extends ActiveRecord
     public function rules()
     {
         return [
+            [['lat'],'default','value'=>30.545581470360048],
+            [['lng'],'default','value'=>50.43576711617286],
             [['description'], 'string'],
             [['lat', 'lng'], 'number'],
             [['usersList'], 'safe'],
@@ -140,7 +142,7 @@ class Event extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEvents()
+    public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])
             ->viaTable('{{%user_has_events}}', ['eventId' => 'id']);

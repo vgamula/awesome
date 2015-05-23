@@ -38,7 +38,8 @@
     "nodge/yii2-eauth": "dev-master",
     "philippfrenzel/yii2fullcalendar": "dev-master",
     "kartik-v/yii2-widget-datetimepicker": "dev-master",
-    "vlucas/phpdotenv": "~1.1@dev"
+    "vlucas/phpdotenv": "~1.1@dev",
+    "unclead/yii2-multiple-input": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
