@@ -16,6 +16,7 @@ class m150523_092944_create_events_table extends Migration
         $this->createTable($this->tableName, [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING,
+            'userId' => Schema::TYPE_INTEGER,
             'description' => Schema::TYPE_TEXT,
             'photos' => Schema::TYPE_TEXT,
             'start' => Schema::TYPE_DATETIME,

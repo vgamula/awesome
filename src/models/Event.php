@@ -2,8 +2,10 @@
 
 namespace app\models;
 
+use nullref\useful\JsonBehavior;
 use voskobovich\behaviors\ManyToManyBehavior;
 use Yii;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Json;
@@ -19,6 +21,7 @@ use yii\helpers\Json;
  * @property double $lat
  * @property double $lng
  * @property string $placeName
+ * @property string|array $photos
  * @property integer $visible
  * @property integer $status
  *
@@ -51,6 +54,12 @@ class Event extends ActiveRecord
         return '{{%events}}';
     }
 
+    public function init()
+    {
+        $this->photos = [];
+        parent::init();
+    }
+
     /**
      * @return array
      */
@@ -67,6 +76,15 @@ class Event extends ActiveRecord
                 'relations' => [
                     'usersList' => 'users',
                 ],
+            ],
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'userId',
+                'updatedByAttribute' => 'userId',
+            ],
+            [
+                'class' => JsonBehavior::className(),
+                'fields' => ['photos'],
             ],
         ]);
     }
@@ -100,15 +118,25 @@ class Event extends ActiveRecord
     public function rules()
     {
         return [
-            [['lat'],'default','value'=>30.545581470360048],
-            [['lng'],'default','value'=>50.43576711617286],
+            [['lat'], 'default', 'value' => 30.545581470360048],
+            [['lng'], 'default', 'value' => 50.43576711617286],
             [['description'], 'string'],
+            [['start'], 'compareDates'],
             [['lat', 'lng'], 'number'],
-            [['usersList'], 'safe'],
+            [['usersList', 'userId', 'photos'], 'safe'],
             [['start', 'end', 'name', 'description', 'placeName'], 'required'],
             [['visible', 'status'], 'integer'],
             [['name', 'placeName'], 'string', 'max' => 255]
         ];
+    }
+
+    public function compareDates()
+    {
+        if (!$this->hasErrors()) {
+            if (strtotime($this->start) >= strtotime($this->end)) {
+                $this->addError('start', Yii::t('app', 'Start time must be less than end time'));
+            }
+        }
     }
 
     /**
