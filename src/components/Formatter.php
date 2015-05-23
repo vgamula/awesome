@@ -21,25 +21,6 @@ class Formatter extends \yii\i18n\Formatter
         return isset(Helper::getStatuses()[$value]) ? Helper::getStatuses()[$value] : Yii::t('app', 'N/A');
     }
 
-    public function asVendor($id)
-    {
-        /** @var Vendor $vendor */
-        $vendor = Vendor::findOne($id);
-        return isset($vendor) ? $vendor->title : Yii::t('app', 'N/A');
-    }
-
-    public function asCategory($id)
-    {
-        /** @var Category $category */
-        $category = Category::findOne($id);
-        return isset($category) ? $category->title : Yii::t('app', 'N/A');
-    }
-
-    public function asOrderStatus($value)
-    {
-        return (isset(Order::getStatuses()[$value])) ? Order::getStatuses()[$value] : Yii::t('app', 'N/A');
-    }
-
     public function asFancyImage($value)
     {
         if ($value === null) {

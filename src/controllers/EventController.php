@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\User;
+use app\models\UserHasEvents;
 use Yii;
 use app\models\Event;
 use app\models\EventSearch;
@@ -122,5 +124,49 @@ class EventController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+
+    /**
+     * Subscribe current user to event by id
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
+    public function actionSubscribe($id)
+    {
+        /** @var Event $event */
+        $event = Event::findOne($id);
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        if (!isset($event) || UserHasEvents::find(['eventId' => $event->id, 'userId' => $user->id])->exists()) {
+            throw new NotFoundHttpException(Yii::t('app', 'Page not found'));
+        }
+        $relation = new UserHasEvents(['eventId' => $event->id, 'userId' => $user->id]);
+        $relation->save(false);
+
+        return $this->redirect(['view', 'id' => $event->id]);
+    }
+
+    /**
+     * Unsubscribe current user from event by id
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
+    public function actionUnsubscribe($id)
+    {
+        /** @var Event $event */
+        $event = Event::findOne($id);
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        /** @var UserHasEvents $relation */
+        $relation = UserHasEvents::findOne(['eventId' => $event->id, 'userId' => $user->id]);
+        if (!isset($event) || !isset($relation)) {
+            throw new NotFoundHttpException(Yii::t('app', 'Page not found'));
+        }
+        $relation->delete();
+
+        return $this->redirect(['view', 'id' => $event->id]);
     }
 }

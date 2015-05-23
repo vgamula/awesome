@@ -2,9 +2,11 @@
 
 namespace app\models;
 
+use voskobovich\behaviors\ManyToManyBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%events}}".
@@ -19,6 +21,11 @@ use yii\db\ActiveRecord;
  * @property string $placeName
  * @property integer $visible
  * @property integer $status
+ *
+ * @property string $from
+ * @property string $to
+ * @property User[] $users
+ * @property User[] $usersList
  */
 class Event extends ActiveRecord
 {
@@ -55,6 +62,12 @@ class Event extends ActiveRecord
                 'createdAtAttribute' => 'createdAt',
                 'updatedAtAttribute' => 'updatedAt',
             ],
+            [
+                'class' => ManyToManyBehavior::className(),
+                'relations' => [
+                    'usersList' => 'users',
+                ],
+            ],
         ]);
     }
 
@@ -89,7 +102,8 @@ class Event extends ActiveRecord
         return [
             [['description'], 'string'],
             [['lat', 'lng'], 'number'],
-            [['start', 'end', 'name', 'description'], 'required'],
+            [['usersList'], 'safe'],
+            [['start', 'end', 'name', 'description', 'placeName'], 'required'],
             [['visible', 'status'], 'integer'],
             [['name', 'placeName'], 'string', 'max' => 255]
         ];
@@ -126,9 +140,39 @@ class Event extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategories()
+    public function getEvents()
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])
             ->viaTable('{{%user_has_events}}', ['eventId' => 'id']);
+    }
+
+    public function getJsonData()
+    {
+        return Json::encode([
+                'title' => $this->getTitle(),
+                'from' => $this->from,
+                'to' => $this->to,
+            ]
+        );
+    }
+
+    public function getFrom()
+    {
+        return date(DATE_ISO8601, strtotime($this->start));
+    }
+
+    public function getTo()
+    {
+        return date(DATE_ISO8601, strtotime($this->end));
+    }
+
+    /**
+     * Check user as subscriber
+     * @param User $user
+     * @return boolean
+     */
+    public function hasSubscriber(User $user)
+    {
+        return UserHasEvents::find()->where(['userId' => $user->id, 'eventId' => $this->id])->exists();
     }
 }

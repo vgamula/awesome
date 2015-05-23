@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use voskobovich\behaviors\ManyToManyBehavior;
 use Yii;
 use yii\base\ErrorException;
 use yii\base\NotSupportedException;
@@ -20,6 +21,9 @@ use yii\web\IdentityInterface;
  * @property string $avatar
  * @property integer $createdAt
  * @property integer $updatedAt
+ *
+ * @property Event[] $events
+ * @property Event[] $eventsList
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -38,6 +42,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['username',], 'required'],
+            [['eventsList'], 'safe'],
             [['createdAt', 'updatedAt'], 'integer'],
             [['facebookId', 'twitterId', 'googleId', 'avatar'], 'safe',]
         ];
@@ -50,6 +55,12 @@ class User extends ActiveRecord implements IdentityInterface
                 'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'createdAt',
                 'updatedAtAttribute' => 'updatedAt',
+            ],
+            [
+                'class' => ManyToManyBehavior::className(),
+                'relations' => [
+                    'eventsList' => 'events',
+                ],
             ],
         ]);
     }
@@ -152,5 +163,14 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         return null;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEvents()
+    {
+        return $this->hasMany(Event::className(), ['id' => 'eventId'])
+            ->viaTable('{{%user_has_events}}', ['userId' => 'id']);
     }
 }
