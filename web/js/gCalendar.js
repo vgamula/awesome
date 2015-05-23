@@ -1,7 +1,7 @@
 
-app.gCalendarExport = function(eventObj, callback) {
+app.gCalendarExport = function(gKey, eventObj, callback) {
 
-    var CLIENT_ID = '723383549848-a2988ciq9d1jsie29v79seui32trsbko.apps.googleusercontent.com';
+    var CLIENT_ID = gKey;
     var SCOPES = ['https://www.googleapis.com/auth/calendar'];
 
     /**

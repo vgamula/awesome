@@ -11,6 +11,8 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?callback=initiali
 $this->registerJsFile('/js/gCalendar.js', ['depends' => 'app\assets\AppAsset']);
 
 $this->title = $model->name;
+$this->gKey = '723383549848-a2988ciq9d1jsie29v79seui32trsbko.apps.googleusercontent.com';
+
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Events'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -48,25 +50,3 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
-
-<div id="map" style="width: 300px; height: 300px;">
-</div>
-
-<button type="button" onclick="gCalendarExport()">Export Event</button>
-
-<script type="text/javascript">
-    function initialize(){
-        var centerLatLng = new google.maps.LatLng(<?= $model->lat ?>, <?= $model->lng ?>);
-        var mapProp = {
-            center: centerLatLng,
-            zoom: 13,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = window.map = new google.maps.Map(document.getElementById("map"), mapProp);
-        marker = new google.maps.Marker({
-            position: centerLatLng,
-            map: map,
-            draggable: false,
-        });
-    };
-</script>
