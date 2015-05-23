@@ -9,5 +9,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Yii::t('app', 'This site for offline events') ?>
     </p>
 </div>

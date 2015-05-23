@@ -1,7 +1,6 @@
 <?php
 use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -49,26 +48,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endif ?>
     </p>
 
-    <!-- <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'name',
-            'description:ntext',
-            'lat',
-            'lng',
-            'placeName',
-            'visible',
-            'status',
-        ],
-    ]) ?> -->
-
-
     <div class="event-dscr"> <?= $model->description ?> </div>
 
 </div>
 
 <div id="map"></div>
+
+<?php if (!empty($model->photos)): ?>
+    <span><?= Yii::t('app', 'Photos') ?></span>
+    <div class="row">
+        <?php foreach ($model->photos as $photo): ?>
+            <div class="col-md-3">
+                <?= Yii::$app->formatter->asFancyImage($photo) ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endif ?>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -101,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
         marker = new google.maps.Marker({
             position: centerLatLng,
             map: map,
-            draggable: false,
+            draggable: false
         });
     }
     ;
