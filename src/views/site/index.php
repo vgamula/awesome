@@ -21,6 +21,7 @@ $this->title = Yii::$app->name;
                 'dataProvider' => $dataProvider,
                 'itemView' => '_event',
                 'layout' => '<div class="row">{items}</div>',
+                'emptyText' => '',
             ]) ?>
         </div>
 
