@@ -1,0 +1,71 @@
+{
+  "name": "yiisoft/yii2-app-basic",
+  "description": "Yii 2 Basic Project Template",
+  "keywords": [
+    "yii2",
+    "framework",
+    "basic",
+    "project template"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-bootstrap": "*",
+    "yiisoft/yii2-swiftmailer": "*",
+    "bower-asset/jquery": "~2.0 | ~1.10",
+    "bower-asset/readmore": "*",
+    "voskobovich/yii2-many-many-behavior": "*",
+    "nullref/yii2-useful": "dev-master",
+    "mihaildev/yii2-ckeditor": "*",
+    "mihaildev/yii2-elfinder": "*",
+    "omnilight/yii2-shopping-cart": "*",
+    "rmrevin/yii2-fontawesome": "2.8.*",
+    "newerton/yii2-fancybox": "dev-master",
+    "yiisoft/yii2-jui": "@stable",
+    "pheme/yii2-settings": "*",
+    "wbraganca/yii2-fancytree-widget": "*"
+  },
+  "require-dev": {
+    "yiisoft/yii2-codeception": "*",
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-faker": "*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "yii\\composer\\Installer::postCreateProject"
+    ]
+  },
+  "extra": {
+    "yii\\composer\\Installer::postCreateProject": {
+      "setPermission": [
+        {
+          "runtime": "0777",
+          "web/assets": "0777",
+          "yii": "0755"
+        }
+      ],
+      "generateCookieValidationKey": [
+        "src/config/web.php"
+      ]
+    },
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
+  }
+}
