@@ -9,7 +9,6 @@ use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Json;
-use app\models\User;
 
 /**
  * This is the model class for table "{{%events}}".
@@ -200,13 +199,14 @@ class Event extends ActiveRecord
     }
 
     /**
-     * Check user as subscriber
-     * @param User $user
-     * @return boolean
+     * @return bool
      */
-    public function hasSubscriber(User $user)
+    public function userIsSubscriber()
     {
-        return UserHasEvents::find()->where(['userId' => $user->id, 'eventId' => $this->id])->exists();
+        if (Yii::$app->user->isGuest) {
+            return false;
+        }
+        return UserHasEvents::find()->where(['userId' => Yii::$app->user->identity->id, 'eventId' => $this->id])->exists();
     }
 
     public function getOwner()
