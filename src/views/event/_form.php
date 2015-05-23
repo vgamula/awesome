@@ -59,7 +59,11 @@ use yii\widgets\ActiveForm;
         }
         function initialize(){
             var marker = null;
-            var centerLatLng = new google.maps.LatLng(51.508742, -0.120850);
+            <?php if ($model->lat && $model->lng): ?>
+                var centerLatLng = new google.maps.LatLng('<?= $model->lat ?>', '<?= $model->lng ?>');
+            <?php else: ?>
+                var centerLatLng = new google.maps.LatLng(30.545581470360048, 50.43576711617286);
+            <?php endif ?>
             var mapProp = {
                 center: centerLatLng,
                 zoom: 13,
@@ -78,6 +82,7 @@ use yii\widgets\ActiveForm;
             {
                 setPosition(marker, event.latLng, map);
             });
+            <?php if (!$model->lat || !$model->lng): ?>
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(pos) {
                     coords = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -85,6 +90,7 @@ use yii\widgets\ActiveForm;
                     map.setCenter(coords);
                 });
             }
+            <?php endif ?>
         };
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
