@@ -7,5 +7,5 @@ use yii\test\ActiveFixture;
 
 class TopicFixture extends ActiveFixture
 {
-    public $modelClass = 'app\models\Topic';
+    public $modelClass = 'app\models\UserHasEvent';
 } 
