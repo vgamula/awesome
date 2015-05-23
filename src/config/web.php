@@ -25,6 +25,33 @@ $config = [
     ],
     'components' => [
 
+        'eauth' => [
+            'class' => 'nodge\eauth\EAuth',
+            'popup' => true,
+            'cache' => false,
+            'cacheExpire' => 0,
+            'services' => [
+                'google' => [
+                    // register your app here: https://code.google.com/apis/console/
+                    'class' => 'nodge\eauth\services\GoogleOAuth2Service',
+                    'clientId' => '723383549848-a2988ciq9d1jsie29v79seui32trsbko.apps.googleusercontent.com',
+                    'clientSecret' => 'm7HHgfCVZ9Uk1HYqUVv5Jog2',
+                    'title' => 'Google (OAuth)',
+                ],
+                'facebook' => [
+                    // register your app here: https://developers.facebook.com/apps/
+                    'class' => 'nodge\eauth\services\FacebookOAuth2Service',
+                    'clientId' => '1838151016410078',
+                    'clientSecret' => 'e25d510672c8a1acff94d42569f1ec5a',
+                ],
+                'twitter' => [
+                    // register your app here: https://dev.twitter.com/apps/new
+                    'class' => 'nodge\eauth\services\TwitterOAuth1Service',
+                    'key' => 'tZ3MaR9dlwD4S8iXIrM7zdvtd',
+                    'secret' => 'j6SK0NzqTvOjvlqTFtheIGDezsnJQY3xZu4nPOUASWCDnFGC0i',
+                ]
+            ],
+        ],
         'assetManager' => [
             'bundles' => [
                 'wbraganca\fancytree\FancytreeAsset' => [
@@ -72,6 +99,9 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                'login/<service:google|facebook|twitter>' => 'site/login',
+            ],
         ],
         'db' => require(__DIR__ . '/db.php'),
         'cart' => [

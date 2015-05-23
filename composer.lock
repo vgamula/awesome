@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e56942a0e86047078c9e7ebf30b8a7c6",
+    "hash": "35c2899a6a383bc94536292be0cfab96",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -114,7 +114,8 @@
                 "tabletree",
                 "tree",
                 "treegrid"
-            ]
+            ],
+            "time": "2015-05-07 06:24:48"
         },
         {
             "name": "bower-asset/fontawesome",
@@ -303,6 +304,47 @@
             }
         },
         {
+            "name": "bower-asset/readmore",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jedfoster/Readmore.js.git",
+                "reference": "d848952d57c12bef136888d39bc709c3d7532734"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jedfoster/Readmore.js/zipball/d848952d57c12bef136888d39bc709c3d7532734",
+                "reference": "d848952d57c12bef136888d39bc709c3d7532734",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "readmore.min.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ],
+                "branch-alias": {
+                    "dev-master": "2.0.4-dev"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A lightweight jQuery plugin for collapsing and expanding long blocks of text with \"Read more\" and \"Close\" links.",
+            "keywords": [
+                "collapse",
+                "css",
+                "expand",
+                "jquery",
+                "readmore"
+            ],
+            "time": "2015-02-16 05:12:59"
+        },
+        {
             "name": "bower-asset/yii2-pjax",
             "version": "dev-master",
             "source": {
@@ -336,7 +378,8 @@
             },
             "license": [
                 "MIT"
-            ]
+            ],
+            "time": "2015-03-08 21:03:11"
         },
         {
             "name": "cebe/markdown",
@@ -443,47 +486,66 @@
             "time": "2013-11-30 08:25:19"
         },
         {
-            "name": "marciocamello/yii2-x-editable",
-            "version": "dev-master",
+            "name": "lusitanian/oauth",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/marciocamello/yii2-x-editable.git",
-                "reference": "6e0b042db7240cc1ef99e40d45743e213e30b1be"
+                "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
+                "reference": "ac5a1cd5a4519143728dce2213936eea302edf8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marciocamello/yii2-x-editable/zipball/6e0b042db7240cc1ef99e40d45743e213e30b1be",
-                "reference": "6e0b042db7240cc1ef99e40d45743e213e30b1be",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/ac5a1cd5a4519143728dce2213936eea302edf8a",
+                "reference": "ac5a1cd5a4519143728dce2213936eea302edf8a",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-bootstrap": "*"
+                "php": ">=5.3.0"
             },
-            "type": "yii2-extension",
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "predis/predis": "0.8.*@dev",
+                "symfony/http-foundation": "~2.1"
+            },
+            "suggest": {
+                "ext-openssl": "Allows for usage of secure connections with the stream-based HTTP client.",
+                "predis/predis": "Allows using the Redis storage backend.",
+                "symfony/http-foundation": "Allows using the Symfony Session storage backend."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
             "autoload": {
-                "psr-4": {
-                    "mcms\\xeditable\\": ""
+                "psr-0": {
+                    "OAuth": "src",
+                    "OAuth\\Unit": "tests"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "MarcioCamello",
-                    "email": "marciocamello@outlook.com"
+                    "name": "David Desberg",
+                    "email": "david@daviddesberg.com"
+                },
+                {
+                    "name": "Pieter Hordijk",
+                    "email": "info@pieterhordijk.com"
                 }
             ],
-            "description": "X-editable extensions for Yii 2, based in X-editable with Bootstrap",
+            "description": "PHP 5.3+ oAuth 1/2 Library",
             "keywords": [
-                "extension",
-                "mcms",
-                "x-editable",
-                "yii2"
+                "Authentication",
+                "authorization",
+                "oauth",
+                "security"
             ],
-            "time": "2014-08-08 13:22:56"
+            "time": "2014-09-05 15:19:58"
         },
         {
             "name": "mihaildev/yii2-ckeditor",
@@ -696,6 +758,105 @@
                 "yii2"
             ],
             "time": "2015-05-10 18:35:20"
+        },
+        {
+            "name": "nodge/lightopenid",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nodge/LightOpenID.git",
+                "reference": "a5492cc0c932c557b7e9b54a6e5bbd85cc5fa041"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nodge/LightOpenID/zipball/a5492cc0c932c557b7e9b54a6e5bbd85cc5fa041",
+                "reference": "a5492cc0c932c557b7e9b54a6e5bbd85cc5fa041",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "openid.php",
+                    "provider/provider.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT License"
+            ],
+            "authors": [
+                {
+                    "name": "Mewp",
+                    "homepage": "http://code.google.com/p/lightopenid/"
+                },
+                {
+                    "name": "Ignat Ignatov",
+                    "homepage": "https://github.com/iignatov/LightOpenID"
+                }
+            ],
+            "description": "Lightweight PHP5 library for easy OpenID authentication.",
+            "homepage": "https://github.com/Nodge/LightOpenID",
+            "keywords": [
+                "Authentication",
+                "OpenId"
+            ],
+            "time": "2013-08-31 16:48:56"
+        },
+        {
+            "name": "nodge/yii2-eauth",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nodge/yii2-eauth.git",
+                "reference": "304ffb2de8a7bea3b5061ce948a7b9a3fcd5495f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nodge/yii2-eauth/zipball/304ffb2de8a7bea3b5061ce948a7b9a3fcd5495f",
+                "reference": "304ffb2de8a7bea3b5061ce948a7b9a3fcd5495f",
+                "shasum": ""
+            },
+            "require": {
+                "lib-curl": "*",
+                "lusitanian/oauth": "~0.3.0",
+                "nodge/lightopenid": "~1.1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "nodge\\eauth\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nodge\\eauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "New BSD License"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Zemskov",
+                    "email": "nodge@yandex.ru",
+                    "homepage": "http://nodge.ru/"
+                }
+            ],
+            "description": "Yii2 EAuth Extension. EAuth allows to authenticate users with accounts on other websites (Google, Facebook, Twitter, etc).",
+            "homepage": "https://github.com/Nodge/yii2-eauth",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "eauth",
+                "extension",
+                "oauth",
+                "yii2"
+            ],
+            "time": "2015-05-17 10:22:02"
         },
         {
             "name": "nullref/yii2-useful",
@@ -971,57 +1132,6 @@
                 "mailer"
             ],
             "time": "2015-03-14 06:06:39"
-        },
-        {
-            "name": "vlucas/phpdotenv",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
-                "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Dotenv": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "homepage": "http://github.com/vlucas/phpdotenv",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "time": "2014-12-05 15:19:21"
         },
         {
             "name": "voskobovich/yii2-many-many-behavior",
@@ -1480,6 +1590,49 @@
             "time": "2014-06-04 14:43:02"
         },
         {
+            "name": "marciocamello/yii2-x-editable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marciocamello/yii2-x-editable.git",
+                "reference": "6e0b042db7240cc1ef99e40d45743e213e30b1be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marciocamello/yii2-x-editable/zipball/6e0b042db7240cc1ef99e40d45743e213e30b1be",
+                "reference": "6e0b042db7240cc1ef99e40d45743e213e30b1be",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "mcms\\xeditable\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "MarcioCamello",
+                    "email": "marciocamello@outlook.com"
+                }
+            ],
+            "description": "X-editable extensions for Yii 2, based in X-editable with Bootstrap",
+            "keywords": [
+                "extension",
+                "mcms",
+                "x-editable",
+                "yii2"
+            ],
+            "time": "2014-08-08 13:22:56"
+        },
+        {
             "name": "phpspec/php-diff",
             "version": "v1.0.2",
             "source": {
@@ -1512,6 +1665,57 @@
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
             "time": "2013-11-01 13:02:21"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
+                "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Dotenv": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "http://www.vancelucas.com"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "homepage": "http://github.com/vlucas/phpdotenv",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2014-12-05 15:19:21"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -1709,10 +1913,10 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "vlucas/phpdotenv": 20,
-        "marciocamello/yii2-x-editable": 20,
+        "nullref/yii2-useful": 20,
         "newerton/yii2-fancybox": 20,
-        "nullref/yii2-useful": 20
+        "yiisoft/yii2-jui": 0,
+        "nodge/yii2-eauth": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

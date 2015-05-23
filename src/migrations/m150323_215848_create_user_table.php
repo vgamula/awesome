@@ -1,7 +1,7 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
+use yii\db\Schema;
 
 class m150323_215848_create_user_table extends Migration
 {
@@ -15,18 +15,14 @@ class m150323_215848_create_user_table extends Migration
         }
         $this->createTable($this->tableName, [
             'id' => Schema::TYPE_PK,
-            'email' => Schema::TYPE_STRING . ' NOT NULL',
             'firstName' => Schema::TYPE_STRING . ' NULL',
             'lastName' => Schema::TYPE_STRING . ' NULL',
-            'isActive' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 0',
-            'role' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 0',
-            'passwordHash' => Schema::TYPE_STRING . ' NOT NULL',
-            'passwordResetToken' => Schema::TYPE_STRING . ' NULL DEFAULT NULL',
-            'passwordResetExpire' => Schema::TYPE_INTEGER . ' NULL DEFAULT NULL',
+            'facebookId' => Schema::TYPE_STRING . ' NULL',
+            'twitterId' => Schema::TYPE_STRING . ' NULL',
+            'googleId' => Schema::TYPE_STRING . ' NULL',
+            'avatar' => Schema::TYPE_STRING,
             'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'emailConfirmToken' => Schema::TYPE_STRING . ' NULL DEFAULT NULL',
-            'emailConfirmed' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
         ], $tableOptions);
     }
 

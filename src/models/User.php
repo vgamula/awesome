@@ -2,102 +2,94 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+use yii\base\ErrorException;
+use yii\base\Object;
+use yii\web\IdentityInterface;
+
+class User extends Object implements IdentityInterface
 {
     public $id;
     public $username;
     public $password;
     public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
+    /**
+     * @var array EAuth attributes
+     */
+    public $profile;
+    private static $users = array(
+        '100' => array(
             'id' => '100',
             'username' => 'admin',
             'password' => 'admin',
             'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
+        ),
+        '101' => array(
             'id' => '101',
             'username' => 'demo',
             'password' => 'demo',
             'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
-
-    /**
-     * @inheritdoc
-     */
+        ),
+    );
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
+        if (\Yii::$app->getSession()->has('user-'.$id)) {
+            return new self(\Yii::$app->getSession()->get('user-'.$id));
         }
-
-        return null;
+        else {
+            return isset(self::$users[$id]) ? new self(self::$users[$id]) : null;
+        }
     }
-
-    /**
-     * Finds user by username
-     *
-     * @param  string      $username
-     * @return static|null
-     */
     public static function findByUsername($username)
     {
         foreach (self::$users as $user) {
             if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
+                return new self($user);
             }
         }
-
         return null;
     }
-
     /**
-     * @inheritdoc
+     * @param \nodge\eauth\ServiceBase $service
+     * @return User
+     * @throws ErrorException
      */
-    public function getId()
-    {
+    public static function findByEAuth($service) {
+        if (!$service->getIsAuthenticated()) {
+            throw new ErrorException('EAuth user should be authenticated before creating identity.');
+        }
+        $id = $service->getServiceName().'-'.$service->getId();
+        $attributes = array(
+            'id' => $id,
+            'username' => $service->getAttribute('name'),
+            'authKey' => md5($id),
+            'profile' => $service->getAttributes(),
+        );
+        $attributes['profile']['service'] = $service->getServiceName();
+        \Yii::$app->getSession()->set('user-'.$id, $attributes);
+        return new self($attributes);
+    }
+    public function getId() {
         return $this->id;
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function getAuthKey()
-    {
+    public function getAuthKey() {
         return $this->authKey;
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
-    {
+    public function validateAuthKey($authKey) {
         return $this->authKey === $authKey;
     }
-
-    /**
-     * Validates password
-     *
-     * @param  string  $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
+    public function validatePassword($password) {
         return $this->password === $password;
+    }
+    /**
+     * Finds an identity by the given secrete token.
+     *
+     * @param string $token the secrete token
+     * @param null $type type of $token
+     * @return IdentityInterface the identity object that matches the given token.
+     * Null should be returned if such an identity cannot be found
+     * or the identity is not in an active state (disabled, deleted, etc.)
+     */
+    public static function findIdentityByAccessToken($token, $type = null) {
+        return null;
     }
 }
