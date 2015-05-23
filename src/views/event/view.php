@@ -17,7 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="event-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type"><?= Html::encode($this->title) ?></h1>
+          </div>
+        </div>
+    </div>
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -34,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+    <!-- <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -46,12 +52,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'visible',
             'status',
         ],
-    ]) ?>
+    ]) ?> -->
+
+
+    <div class="event-dscr"> <?= $model->description ?> </div>
 
 </div>
 
-<div id="map">
-</div>
+<div id="map"></div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

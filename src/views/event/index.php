@@ -12,9 +12,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="event-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+  <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1 id="type"><?= Html::encode($this->title) ?></h1>
+        </div>
+      </div>
+  </div>
+  
     <p>
         <?= Html::a(Yii::t('app', 'Create Event'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
