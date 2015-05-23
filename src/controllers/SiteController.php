@@ -67,7 +67,7 @@ class SiteController extends Controller
             $eauth->setCancelUrl(Yii::$app->getUrlManager()->createAbsoluteUrl('site/login'));
             try {
                 if ($eauth->authenticate()) {
-                    $identity = User::findByEAuth($eauth);
+                    $identity = User::findByEAuth($eauth, $serviceName);
 
                     Yii::$app->getUser()->login($identity);
                     if (!Yii::$app->user->isGuest) {
