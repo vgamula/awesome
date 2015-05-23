@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
+/* @var $googleId string */
 
 $this->registerJsFile('https://apis.google.com/js/client.js?onload=checkAuth');
 $this->registerJsFile('https://maps.googleapis.com/maps/api/js?callback=initialize');
@@ -37,14 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endif ?>
         <?= Html::button(FA::icon('marker') . Yii::t('app', 'Export event to Google Calendar'), [
             'class' => 'btn btn-success',
-            'onclick' => "app.gCalendarExport('{$gooogleId}', {$model->getJsonData()})",
+            'onclick' => "app.gCalendarExport('{$googleId}', {$model->getJsonData()})",
         ]) ?>
-        <?php if (!Yii::$app->user->isGuest): ?>
-            <?php if (!$model->hasSubscriber(Yii::$app->user->identity)): ?>
-                <?= Html::a(Yii::t('app', 'Subscribe'), ['subscribe', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-            <?php else: ?>
-                <?= Html::a(Yii::t('app', 'Unsubscribe'), ['unsubscribe', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
-            <?php endif ?>
+        <?php if (!$model->userIsSubscriber()): ?>
+            <?= Html::a(Yii::t('app', 'Subscribe'), ['subscribe', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?php else: ?>
+            <?= Html::a(Yii::t('app', 'Unsubscribe'), ['unsubscribe', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
         <?php endif ?>
     </p>
 
