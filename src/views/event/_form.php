@@ -80,7 +80,7 @@ JS
     <?= Html::activeHiddenInput($model, 'lat', ['id' => 'lat']) ?>
     <?= Html::activeHiddenInput($model, 'lng', ['id' => 'lng']) ?>
 
-    <div id="map" style="width: 500px; height: 380px;">
+    <div id="map">
     </div>
 
     <?= $form->field($model, 'visible')->dropDownList(Event::getVisibilities()) ?>

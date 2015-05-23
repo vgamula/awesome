@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<div id="map" style="width: 300px; height: 300px;">
+<div id="map">
 </div>
 
 <button type="button" onclick="gCalendarExport()">Export Event</button>
