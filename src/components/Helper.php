@@ -2,7 +2,6 @@
 
 namespace app\components;
 
-use app\models\catalog\Product;
 use Yii;
 
 /**

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4d4b7709763d16199d2f2a2c9eb1aa96",
+    "hash": "b4c33dc8931008e2727ab20e467e555f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -197,56 +197,6 @@
             "description": "Font Awesome"
         },
         {
-            "name": "bower-asset/fullcalendar",
-            "version": "v2.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/arshaw/fullcalendar.git",
-                "reference": "aab1068caa23bac6cfa11103d8b644faf6b4a184"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/arshaw/fullcalendar/zipball/aab1068caa23bac6cfa11103d8b644faf6b4a184",
-                "reference": "aab1068caa23bac6cfa11103d8b644faf6b4a184",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.7.1",
-                "bower-asset/moment": ">=2.5.0"
-            },
-            "require-dev": {
-                "bower-asset/bootstrap": "~3.2.0",
-                "bower-asset/jasmine-fixture": "~1.2.0",
-                "bower-asset/jasmine-jquery": "~2.0.3",
-                "bower-asset/jquery-mockjax": "~1.5.4",
-                "bower-asset/jquery-simulate-ext": "~1.3.0",
-                "bower-asset/jquery-ui": ">=1.11.1",
-                "bower-asset/moment-timezone": "~0.2.1"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "dist/fullcalendar.js",
-                    "dist/fullcalendar.css"
-                ],
-                "bower-asset-ignore": [
-                    "*",
-                    "**/.*",
-                    "!/dist/**",
-                    "!/bower.json",
-                    "!/changelog.*",
-                    "!/license.*",
-                    "!/readme.*"
-                ]
-            },
-            "description": "Full-sized drag & drop event calendar",
-            "keywords": [
-                "calendar",
-                "event",
-                "full-sized"
-            ]
-        },
-        {
             "name": "bower-asset/jquery",
             "version": "2.1.4",
             "source": {
@@ -400,44 +350,6 @@
             ]
         },
         {
-            "name": "bower-asset/moment",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/moment/moment.git",
-                "reference": "25cc720fbaab7323a1016cd0beb6a36e349c41be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment/zipball/25cc720fbaab7323a1016cd0beb6a36e349c41be",
-                "reference": "25cc720fbaab7323a1016cd0beb6a36e349c41be",
-                "shasum": ""
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": "moment.js",
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "benchmarks",
-                    "bower_components",
-                    "meteor",
-                    "node_modules",
-                    "scripts",
-                    "tasks",
-                    "test",
-                    "component.json",
-                    "composer.json",
-                    "CONTRIBUTING.md",
-                    "ender.js",
-                    "Gruntfile.js",
-                    "Moment.js.nuspec",
-                    "package.js",
-                    "package.json"
-                ]
-            },
-            "time": "2015-05-13 07:42:12"
-        },
-        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -464,47 +376,6 @@
                     "package.json"
                 ]
             }
-        },
-        {
-            "name": "bower-asset/readmore",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jedfoster/Readmore.js.git",
-                "reference": "d848952d57c12bef136888d39bc709c3d7532734"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jedfoster/Readmore.js/zipball/d848952d57c12bef136888d39bc709c3d7532734",
-                "reference": "d848952d57c12bef136888d39bc709c3d7532734",
-                "shasum": ""
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": "readmore.min.js",
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "node_modules",
-                    "bower_components",
-                    "test",
-                    "tests"
-                ],
-                "branch-alias": {
-                    "dev-master": "2.0.4-dev"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "A lightweight jQuery plugin for collapsing and expanding long blocks of text with \"Read more\" and \"Close\" links.",
-            "keywords": [
-                "collapse",
-                "css",
-                "expand",
-                "jquery",
-                "readmore"
-            ],
-            "time": "2015-02-16 05:12:59"
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -1099,44 +970,6 @@
             "time": "2015-03-24 09:41:02"
         },
         {
-            "name": "omnilight/yii2-shopping-cart",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/omnilight/yii2-shopping-cart.git",
-                "reference": "b7f38c1772cd419e401f81cf9161d5e2693fef49"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/omnilight/yii2-shopping-cart/zipball/b7f38c1772cd419e401f81cf9161d5e2693fef49",
-                "reference": "b7f38c1772cd419e401f81cf9161d5e2693fef49",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "yz\\shoppingcart\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Pavel Agalecky",
-                    "email": "pavel.agalecky@gmail.com"
-                }
-            ],
-            "description": "Yii2 extension that adds shopping cart functions",
-            "keywords": [
-                "shopping cart",
-                "yii"
-            ],
-            "time": "2015-04-06 08:15:34"
-        },
-        {
             "name": "pheme/yii2-settings",
             "version": "dev-master",
             "source": {
@@ -1219,55 +1052,6 @@
                 "yii2"
             ],
             "time": "2015-02-13 02:36:29"
-        },
-        {
-            "name": "philippfrenzel/yii2fullcalendar",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/philippfrenzel/yii2fullcalendar.git",
-                "reference": "4bed77f9587d796a495c27c1c2d29b4a83c11264"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/philippfrenzel/yii2fullcalendar/zipball/4bed77f9587d796a495c27c1c2d29b4a83c11264",
-                "reference": "4bed77f9587d796a495c27c1c2d29b4a83c11264",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/fullcalendar": "2.2.* | 2.1.* | 2.0.*",
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-jui": "*"
-            },
-            "require-dev": {
-                "codeception/codeception": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "yii2fullcalendar\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Philipp Frenzel",
-                    "email": "philipp@frenzel.net",
-                    "homepage": "http://www.frenzel.net/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Yii2 fullcalendar Widgets",
-            "homepage": "http://www.frenzel.net/",
-            "keywords": [
-                "fullcalendar",
-                "yii2"
-            ],
-            "time": "2015-03-23 10:52:38"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -1372,51 +1156,6 @@
                 "mailer"
             ],
             "time": "2015-05-06 16:40:00"
-        },
-        {
-            "name": "unclead/yii2-multiple-input",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/unclead/yii2-multiple-input.git",
-                "reference": "3ee9ad106ed5d2b8f768a0e8a64ff8bc5ff45cd1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/unclead/yii2-multiple-input/zipball/3ee9ad106ed5d2b8f768a0e8a64ff8bc5ff45cd1",
-                "reference": "3ee9ad106ed5d2b8f768a0e8a64ff8bc5ff45cd1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-bootstrap": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "unclead\\widgets\\examples\\": "examples/",
-                    "unclead\\widgets\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Eugene Tupikov",
-                    "email": "unclead.nsk@gmail.com"
-                }
-            ],
-            "description": "Widget for handle multiple inputs for an attribute of Yii2 framework model",
-            "keywords": [
-                "yii2",
-                "yii2 array input",
-                "yii2 multiple field",
-                "yii2 multiple input"
-            ],
-            "time": "2015-05-11 17:41:52"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2163,10 +1902,8 @@
         "newerton/yii2-fancybox": 20,
         "yiisoft/yii2-jui": 0,
         "nodge/yii2-eauth": 20,
-        "philippfrenzel/yii2fullcalendar": 20,
         "kartik-v/yii2-widget-datetimepicker": 20,
-        "vlucas/phpdotenv": 20,
-        "unclead/yii2-multiple-input": 20
+        "vlucas/phpdotenv": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
