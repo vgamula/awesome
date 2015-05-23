@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\components\MultipleInput;
 use mihaildev\elfinder\InputFile;
+use app\components\Helper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
