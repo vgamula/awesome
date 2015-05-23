@@ -11,6 +11,7 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?callback=initiali
 $this->registerJsFile('/js/gCalendar.js', ['depends' => 'app\assets\AppAsset']);
 
 $this->title = $model->name;
+
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Events'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
         <?= Html::button(FA::icon('marker') . Yii::t('app', 'Export event to Google Calendar'), [
             'class' => 'btn btn-success',
-            'onclick' => "app.gCalendarExport({$model->getJsonData()})",
+            'onclick' => "app.gCalendarExport('{$gooogleId}', {$model->getJsonData()})",
         ]) ?>
     </p>
 

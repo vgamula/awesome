@@ -52,6 +52,7 @@ class EventController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'gooogleId' => '723383549848-a2988ciq9d1jsie29v79seui32trsbko.apps.googleusercontent.com'
         ]);
     }
 
