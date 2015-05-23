@@ -12,6 +12,7 @@ $modules = array_merge($modules, [
 return [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
+    'runtimePath' => dirname(dirname(__DIR__)) . '/runtime',
     'bootstrap' => ['log', 'gii'],
     'controllerNamespace' => 'app\commands',
     'modules' => $modules,
