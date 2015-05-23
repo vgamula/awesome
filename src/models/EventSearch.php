@@ -5,21 +5,23 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Event;
 
 /**
  * EventSearch represents the model behind the search form about `app\models\Event`.
  */
 class EventSearch extends Event
 {
+    public $title;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
+            [['title'], 'string'],
             [['id', 'visible', 'status'], 'integer'],
-            [['name', 'description', 'placeName'], 'safe'],
+            [['name', 'description', 'placeName', 'start', 'end'], 'safe'],
             [['lat', 'lng'], 'number'],
         ];
     }
@@ -51,8 +53,6 @@ class EventSearch extends Event
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
@@ -68,6 +68,23 @@ class EventSearch extends Event
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'placeName', $this->placeName]);
 
+        return $dataProvider;
+    }
+
+    public function clientSearch($params)
+    {
+        $query = Event::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+        $query->byTitle($this->title);
         return $dataProvider;
     }
 }

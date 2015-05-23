@@ -1,5 +1,5 @@
 <?php
-
+use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Event */
 
 $this->registerJsFile('https://apis.google.com/js/client.js?onload=checkAuth');
-$this->registerJsFile('/js/gCalendar.js');
+$this->registerJsFile('/js/gCalendar.js', ['depends' => 'app\assets\AppAsset']);
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Events'), 'url' => ['index']];
@@ -26,6 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::button(FA::icon('marker') . Yii::t('app', 'Export event to Google Calendar'), [
+            'class' => 'btn btn-success',
+            'onclick' => "app.gCalendarExport({$model->getJsonData()})",
+        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -43,5 +47,3 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
-
-<button type="button" onclick="gCalendarExport()">Export Event</button>

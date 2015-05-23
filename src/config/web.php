@@ -61,6 +61,7 @@ $config = [
         ],
         'formatter' => [
             'class' => 'app\components\Formatter',
+            'datetimeFormat' => 'd.M.Y H:m',
         ],
         'request' => [
             'cookieValidationKey' => 'RiAveGUdUACvWZppHVevMJRGd5Rij8uh',

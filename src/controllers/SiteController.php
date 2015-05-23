@@ -2,11 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\catalog\Category;
-use app\models\catalog\Product;
-use app\models\catalog\Vendor;
 use app\models\ContactForm;
 use app\models\Event;
+use app\models\EventSearch;
 use app\models\User;
 use nodge\eauth\ErrorException;
 use nodge\eauth\openid\ControllerBehavior;
@@ -55,13 +53,27 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionSearch()
+    {
+        $model = new EventSearch();
+        $title = Yii::$app->request->getQueryParam('title', '');
+        $dataProvider = $model->clientSearch(Yii::$app->request->queryParams);
+
+        return $this->render('search', [
+            'dataProvider' => $dataProvider,
+            'title' => $title,
+            'model' => $model,
+        ]);
+    }
+
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Event::find()->top(),
+            'query' => Event::find()->enable()->top()->limit(5),
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'model' => new EventSearch(),
         ]);
     }
 

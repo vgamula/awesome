@@ -13,8 +13,24 @@ class EventsQuery extends ActiveQuery
 {
     public function top()
     {
-        $this->limit(5);
         $this->andWhere(['>=', 'start', date('Y-m-d H:i:s')]);
+        return $this;
+    }
+
+    public function enable()
+    {
+        $this->andWhere(['status' => Event::STATUS_ENABLE]);
+        return $this;
+    }
+
+    public function byTitle($title)
+    {
+        $title = trim($title);
+        $words = explode(' ', $title);
+        foreach ($words as $word) {
+            $this->orFilterWhere(['like', 'name', $word]);
+            $this->orFilterWhere(['like', 'placeName', $word]);
+        }
         return $this;
     }
 
@@ -22,7 +38,7 @@ class EventsQuery extends ActiveQuery
     {
         if (\Yii::$app->user->isGuest) {
             $this->andWhere(['visible' => Event::VISIBLE_PUBLIC]);
-        }else{
+        } else {
             //$this->andWhere([]);@TODO
         }
         return $this;

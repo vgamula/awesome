@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%events}}".
@@ -19,6 +20,9 @@ use yii\db\ActiveRecord;
  * @property string $placeName
  * @property integer $visible
  * @property integer $status
+ *
+ * @property string $from
+ * @property string $to
  */
 class Event extends ActiveRecord
 {
@@ -130,5 +134,25 @@ class Event extends ActiveRecord
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])
             ->viaTable('{{%user_has_events}}', ['eventId' => 'id']);
+    }
+
+    public function getJsonData()
+    {
+        return Json::encode([
+                'title' => $this->getTitle(),
+                'from' => $this->from,
+                'to' => $this->to,
+            ]
+        );
+    }
+
+    public function getFrom()
+    {
+        return date(DATE_ISO8601, strtotime($this->start));
+    }
+
+    public function getTo()
+    {
+        return date(DATE_ISO8601, strtotime($this->end));
     }
 }
