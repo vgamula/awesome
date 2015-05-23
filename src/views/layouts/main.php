@@ -43,7 +43,7 @@ AppAsset::register($this);
             ['label' => FA::icon('home') . ' ' . Yii::t('app', 'Home'), 'url' => ['/site/index']],
             ['label' => Yii::t('app', 'Profile'), 'visible' => !Yii::$app->user->isGuest, 'items' => [
                 ['label' => Yii::t('app', 'Events'), 'url' => ['/event']],
-                ['label' => Yii::t('app', 'Users'), 'url' => ['/users']],
+                ['label' => Yii::t('app', 'Users'), 'url' => ['/user']],
             ]],
             Yii::$app->user->isGuest ?
                 ['label' => FA::icon('sign-in') . ' ' . Yii::t('app', 'Login'), 'url' => ['/site/login']] :
@@ -74,7 +74,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; undefined Developers <?= date('Y') ?></p> 
+        <p class="pull-left">&copy; undefined Developers <?= date('Y') ?></p>
         <p class="pull-right"></p>
     </div>
 </footer>
