@@ -56,6 +56,8 @@ class EventSearch extends Event
             return $dataProvider;
         }
 
+        $query->andWhere(['userId' => Yii::$app->user->identity->getId()]);
+
         $query->andFilterWhere([
             'id' => $this->id,
             'lat' => $this->lat,
