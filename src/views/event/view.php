@@ -49,3 +49,44 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<div id="map" style="width: 300px; height: 300px;">
+</div>
+
+<button type="button" onclick="gCalendarExport()">Export Event</button>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'awesomeuawc';
+    var disqus_identifier = 'event-<?= $model->id ?>';
+    var disqus_url = document.location.href;
+    var disqus_title = 'title-<?= $model->id ?>';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+
+
+<script type="text/javascript">
+    function initialize(){
+        var centerLatLng = new google.maps.LatLng(<?= $model->lat ?>, <?= $model->lng ?>);
+        var mapProp = {
+            center: centerLatLng,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = window.map = new google.maps.Map(document.getElementById("map"), mapProp);
+        marker = new google.maps.Marker({
+            position: centerLatLng,
+            map: map,
+            draggable: false,
+        });
+    };
+</script>
