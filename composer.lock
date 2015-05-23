@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f18ff2582d7b4deee27128376d78cd0d",
+    "hash": "4d4b7709763d16199d2f2a2c9eb1aa96",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -1374,6 +1374,51 @@
             "time": "2015-05-06 16:40:00"
         },
         {
+            "name": "unclead/yii2-multiple-input",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unclead/yii2-multiple-input.git",
+                "reference": "3ee9ad106ed5d2b8f768a0e8a64ff8bc5ff45cd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unclead/yii2-multiple-input/zipball/3ee9ad106ed5d2b8f768a0e8a64ff8bc5ff45cd1",
+                "reference": "3ee9ad106ed5d2b8f768a0e8a64ff8bc5ff45cd1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "unclead\\widgets\\examples\\": "examples/",
+                    "unclead\\widgets\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Tupikov",
+                    "email": "unclead.nsk@gmail.com"
+                }
+            ],
+            "description": "Widget for handle multiple inputs for an attribute of Yii2 framework model",
+            "keywords": [
+                "yii2",
+                "yii2 array input",
+                "yii2 multiple field",
+                "yii2 multiple input"
+            ],
+            "time": "2015-05-11 17:41:52"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "dev-master",
             "source": {
@@ -2120,7 +2165,8 @@
         "nodge/yii2-eauth": 20,
         "philippfrenzel/yii2fullcalendar": 20,
         "kartik-v/yii2-widget-datetimepicker": 20,
-        "vlucas/phpdotenv": 20
+        "vlucas/phpdotenv": 20,
+        "unclead/yii2-multiple-input": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

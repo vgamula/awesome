@@ -12,13 +12,6 @@ use Yii;
  */
 class Helper
 {
-    public static function getStatuses()
-    {
-        return [
-            Product::STATUS_DISABLE => Yii::t('catalog', 'Disable'),
-            Product::STATUS_ENABLE => Yii::t('catalog', 'Enable'),
-        ];
-    }
 
     public static function getInputFileOptions($options = [])
     {
