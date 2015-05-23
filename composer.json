@@ -30,11 +30,12 @@
     "mihaildev/yii2-ckeditor": "*",
     "mihaildev/yii2-elfinder": "*",
     "omnilight/yii2-shopping-cart": "*",
-    "rmrevin/yii2-fontawesome": "2.8.*",
+    "rmrevin/yii2-fontawesome": "*",
     "newerton/yii2-fancybox": "dev-master",
     "yiisoft/yii2-jui": "@stable",
     "pheme/yii2-settings": "*",
-    "wbraganca/yii2-fancytree-widget": "*"
+    "wbraganca/yii2-fancytree-widget": "*",
+    "nodge/yii2-eauth": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

@@ -5,14 +5,14 @@ namespace app\controllers;
 use app\models\catalog\Category;
 use app\models\catalog\Product;
 use app\models\catalog\Vendor;
-use Yii;
-use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
-use yii\web\NotFoundHttpException;
+use app\models\LoginForm;
+use app\models\User;
+use nodge\eauth\ErrorException;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 
 class SiteController extends Controller
 {
@@ -59,17 +59,32 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
+        $serviceName = Yii::$app->getRequest()->getQueryParam('service');
+        if (isset($serviceName)) {
+            /** @var $eauth \nodge\eauth\ServiceBase */
+            $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
+            $eauth->setRedirectUrl(Yii::$app->getUser()->getReturnUrl());
+            $eauth->setCancelUrl(Yii::$app->getUrlManager()->createAbsoluteUrl('site/login'));
+            try {
+                if ($eauth->authenticate()) {
+                    $identity = User::findByEAuth($eauth);
+                    Yii::$app->getUser()->login($identity);
+                    $eauth->redirect();
+                } else {
+                    $eauth->cancel();
+                }
+            } catch (ErrorException $e) {
+                Yii::$app->getSession()->setFlash('error', 'EAuthException: ' . $e->getMessage());
+                $eauth->redirect($eauth->getCancelUrl());
+            }
         }
-
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load($_POST) && $model->login()) {
             return $this->goBack();
         } else {
-            return $this->render('login', [
+            return $this->render('login', array(
                 'model' => $model,
-            ]);
+            ));
         }
     }
 

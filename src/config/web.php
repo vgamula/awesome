@@ -25,6 +25,33 @@ $config = [
     ],
     'components' => [
 
+        'eauth' => [
+            'class' => 'nodge\eauth\EAuth',
+            'popup' => true,
+            'cache' => false,
+            'cacheExpire' => 0,
+            'services' => [
+                'google_oauth' => [
+                    // register your app here: https://code.google.com/apis/console/
+                    'class' => 'nodge\eauth\services\GoogleOAuth2Service',
+                    'clientId' => '...',
+                    'clientSecret' => '...',
+                    'title' => 'Google (OAuth)',
+                ],
+                'facebook' => [
+                    // register your app here: https://developers.facebook.com/apps/
+                    'class' => 'nodge\eauth\services\FacebookOAuth2Service',
+                    'clientId' => '...',
+                    'clientSecret' => '...',
+                ],
+                'twitter' => [
+                    // register your app here: https://dev.twitter.com/apps/new
+                    'class' => 'nodge\eauth\services\TwitterOAuth1Service',
+                    'key' => '',
+                    'secret' => '',
+                ]
+            ],
+        ],
         'assetManager' => [
             'bundles' => [
                 'wbraganca\fancytree\FancytreeAsset' => [
