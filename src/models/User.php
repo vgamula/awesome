@@ -21,6 +21,8 @@ use yii\web\IdentityInterface;
  * @property string $avatar
  * @property integer $createdAt
  * @property integer $updatedAt
+ * @property integer $email
+ * @property integer $remindeBefore
  *
  * @property Event[] $events
  * @property Event[] $eventsList
@@ -44,7 +46,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['username',], 'required'],
             [['eventsList'], 'safe'],
             [['createdAt', 'updatedAt'], 'integer'],
-            [['facebookId', 'twitterId', 'googleId', 'avatar'], 'safe',]
+            [['facebookId', 'twitterId', 'googleId', 'avatar'], 'safe',],
+            [['email'], 'email'],
         ];
     }
 
@@ -79,6 +82,8 @@ class User extends ActiveRecord implements IdentityInterface
             'avatar' => Yii::t('app', 'Avatar'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
+            'email' => Yii::t('app', 'Email'),
+            'remindeBefore' => Yii::t('app', 'Reminde before (in days)'),
         ];
     }
 
