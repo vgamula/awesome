@@ -17,6 +17,8 @@ class m150523_092944_create_events_table extends Migration
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING,
             'description' => Schema::TYPE_TEXT,
+            'start' => Schema::TYPE_INTEGER,
+            'end' => Schema::TYPE_INTEGER,
             'lat' => Schema::TYPE_FLOAT,
             'lng' => Schema::TYPE_FLOAT,
             'placeName' => Schema::TYPE_STRING,

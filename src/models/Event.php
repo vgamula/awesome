@@ -11,6 +11,8 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string $name
  * @property string $description
+ * @property integer $start
+ * @property integer $end
  * @property double $lat
  * @property double $lng
  * @property string $placeName
@@ -37,6 +39,29 @@ class Event extends ActiveRecord
     }
 
     /**
+     * @return array
+     */
+    public static function getVisibilities()
+    {
+        return [
+            self::VISIBLE_PUBLIC => Yii::t('app', 'Public'),
+            self::VISIBLE_PROTECTED => Yii::t('app', 'Protected'),
+            self::VISIBLE_PRIVATE => Yii::t('app', 'Private'),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function getStatuses()
+    {
+        return [
+            self::STATUS_ENABLE => Yii::t('app', 'Enable'),
+            self::STATUS_DISABLE => Yii::t('app', 'Disable'),
+        ];
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -44,6 +69,7 @@ class Event extends ActiveRecord
         return [
             [['description'], 'string'],
             [['lat', 'lng'], 'number'],
+            [['start', 'end'], 'required'],
             [['visible', 'status'], 'integer'],
             [['name', 'placeName'], 'string', 'max' => 255]
         ];
@@ -57,6 +83,8 @@ class Event extends ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'start' => Yii::t('app', 'Start'),
+            'end' => Yii::t('app', 'End'),
             'description' => Yii::t('app', 'Description'),
             'lat' => Yii::t('app', 'Lat'),
             'lng' => Yii::t('app', 'Lng'),
@@ -73,5 +101,14 @@ class Event extends ActiveRecord
     public static function find()
     {
         return new EventsQuery(get_called_class());
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategories()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])
+            ->viaTable('{{%user_has_events}}', ['eventId' => 'id']);
     }
 }

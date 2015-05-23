@@ -35,7 +35,10 @@
     "yiisoft/yii2-jui": "@stable",
     "pheme/yii2-settings": "*",
     "wbraganca/yii2-fancytree-widget": "*",
-    "nodge/yii2-eauth": "dev-master"
+    "nodge/yii2-eauth": "dev-master",
+    "philippfrenzel/yii2fullcalendar": "dev-master",
+    "kartik-v/yii2-widget-datetimepicker": "dev-master",
+    "vlucas/phpdotenv": "~1.1@dev"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
