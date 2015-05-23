@@ -42,7 +42,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => FA::icon('home') . ' ' . Yii::t('app', 'Home'), 'url' => ['/site/index']],
             ['label' => Yii::t('app', 'Profile'), 'visible' => !Yii::$app->user->isGuest, 'items' => [
-                ['label' => Yii::t('app', 'My Events'), 'url' => ['/event']],
+                ['label' => Yii::t('app', 'Events'), 'url' => ['/event']],
                 ['label' => Yii::t('app', 'Users'), 'url' => ['/user']],
             ]],
             ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
