@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\ErrorException;
 use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -36,10 +37,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['createdAt', 'updatedAt'], 'required'],
+            [['username',], 'required'],
             [['createdAt', 'updatedAt'], 'integer'],
-            [['username', 'facebookId', 'twitterId', 'googleId', 'avatar'], 'string', 'max' => 255]
+            [['facebookId', 'twitterId', 'googleId', 'avatar'], 'safe',]
         ];
+    }
+
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'createdAt',
+                'updatedAtAttribute' => 'updatedAt',
+            ],
+        ]);
     }
 
     /**
@@ -75,9 +87,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function findIdentity($id)
     {
-        print_r($id);
-        die;
-        return null;
+        return self::findOne($id);
     }
 
     public static function findByUsername($username)
@@ -101,9 +111,12 @@ class User extends ActiveRecord implements IdentityInterface
         $fieldName = $serviceName . 'Id';
         $user = self::findOne([$fieldName => $serviceId]);
         if (!isset($user)) {
-            $user = new User(
-
-            );
+            $attributes = $service->getAttributes();
+            $user = new self([
+                'username' => $attributes['name'],
+                $fieldName => $serviceId,
+            ]);
+            $user->save(false);
         }
         return $user;
     }

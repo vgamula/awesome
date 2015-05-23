@@ -68,8 +68,11 @@ class SiteController extends Controller
             try {
                 if ($eauth->authenticate()) {
                     $identity = User::findByEAuth($eauth);
+
                     Yii::$app->getUser()->login($identity);
-                    $eauth->redirect();
+                    if (!Yii::$app->user->isGuest) {
+                        $eauth->redirect();
+                    }
                 } else {
                     $eauth->cancel();
                 }
