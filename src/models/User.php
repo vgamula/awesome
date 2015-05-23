@@ -22,7 +22,6 @@ use yii\web\IdentityInterface;
  * @property integer $createdAt
  * @property integer $updatedAt
  * @property integer $email
- * @property integer $remindeBefore
  *
  * @property Event[] $events
  * @property Event[] $eventsList
@@ -83,7 +82,6 @@ class User extends ActiveRecord implements IdentityInterface
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
             'email' => Yii::t('app', 'Email'),
-            'remindeBefore' => Yii::t('app', 'Reminde before (in days)'),
         ];
     }
 

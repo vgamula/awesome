@@ -22,7 +22,6 @@ class m150323_215848_create_user_table extends Migration
             'avatar' => Schema::TYPE_STRING,
             'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'remindeBefore' => Schema::TYPE_INTEGER . ' DEFAULT 1',
             'email' => Schema::TYPE_STRING . ' NULL',
         ], $tableOptions);
     }
