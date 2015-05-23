@@ -12,6 +12,7 @@ use yii\bootstrap\Html;
         'method' => 'get',
     ]); ?>
     <?= Html::activeTextInput($model, 'title', ['class' => 'padding-10']) ?>
+    <br/>
     <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
 
     <?php ActiveForm::end(); ?>
