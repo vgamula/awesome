@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var $this \yii\web\View */
 /** @var $model \app\models\Event */
 ?>
-<div class="event-item col-md-3 table-bordered padding-10">
+<div class="event-item col-md-6 col-sm-12 table-bordered padding-10">
     <h3><?= $model->getTitle() ?></h3>
 
     <p><?= Yii::t('app', 'Start:') ?> <?= Yii::$app->formatter->asDatetime($model->start) ?></p>

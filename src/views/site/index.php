@@ -14,6 +14,8 @@ $this->title = Yii::$app->name;
         <?= $this->render('_search', ['model' => $model]) ?>
     </div>
 
+
+    <h3 class="text-center popular">Some Popular Events</h3>
     <div class="body-content">
 
         <div>
