@@ -30,6 +30,11 @@ class Event extends ActiveRecord
     const STATUS_ENABLE = 1;
     const STATUS_DISABLE = 0;
 
+    public function getTitle()
+    {
+        return $this->name . " ($this->placeName)";
+    }
+
     /**
      * @inheritdoc
      */
@@ -69,7 +74,7 @@ class Event extends ActiveRecord
         return [
             [['description'], 'string'],
             [['lat', 'lng'], 'number'],
-            [['start', 'end'], 'required'],
+            [['start', 'end', 'name', 'description'], 'required'],
             [['visible', 'status'], 'integer'],
             [['name', 'placeName'], 'string', 'max' => 255]
         ];
