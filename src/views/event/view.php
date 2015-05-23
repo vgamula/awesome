@@ -6,6 +6,9 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
 
+$this->registerJsFile('https://apis.google.com/js/client.js?onload=checkAuth');
+$this->registerJsFile('/js/gCalendar.js');
+
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Events'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -40,3 +43,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<button type="button" onclick="gCalendarExport()">Export Event</button>
