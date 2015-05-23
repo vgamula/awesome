@@ -1,6 +1,8 @@
 <?php
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
+/** @var $dataProvider \yii\data\ActiveDataProvider */
 $this->title = Yii::$app->name;
 ?>
 <div class="site-index">
@@ -12,7 +14,10 @@ $this->title = Yii::$app->name;
     <div class="body-content">
 
         <div>
-
+            <?= ListView::widget([
+                'dataProvider' => $dataProvider,
+                'itemView' => '_event',
+            ]) ?>
         </div>
 
     </div>

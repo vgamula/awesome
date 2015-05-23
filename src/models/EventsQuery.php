@@ -2,18 +2,31 @@
 
 namespace app\models;
 
+use yii\db\ActiveQuery;
+
 /**
  * This is the ActiveQuery class for [[Event]].
  *
  * @see Event
  */
-class EventsQuery extends \yii\db\ActiveQuery
+class EventsQuery extends ActiveQuery
 {
-    /*public function active()
+    public function top()
     {
-        $this->andWhere('[[status]]=1');
+        $this->limit(5);
+        $this->andWhere(['>=', 'start', date('Y-m-d H:i:s')]);
         return $this;
-    }*/
+    }
+
+    public function filterByUser()
+    {
+        if (\Yii::$app->user->isGuest) {
+            $this->andWhere(['visible' => Event::VISIBLE_PUBLIC]);
+        }else{
+            //$this->andWhere([]);
+        }
+        return $this;
+    }
 
     /**
      * @inheritdoc

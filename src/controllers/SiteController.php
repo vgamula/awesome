@@ -6,9 +6,12 @@ use app\models\catalog\Category;
 use app\models\catalog\Product;
 use app\models\catalog\Vendor;
 use app\models\ContactForm;
+use app\models\Event;
 use app\models\User;
 use nodge\eauth\ErrorException;
+use nodge\eauth\openid\ControllerBehavior;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -37,7 +40,7 @@ class SiteController extends Controller
             ],
             'eauth' => array(
                 // required to disable csrf validation on OpenID requests
-                'class' => \nodge\eauth\openid\ControllerBehavior::className(),
+                'class' => ControllerBehavior::className(),
                 'only' => array('login'),
             ),
         ];
@@ -54,7 +57,12 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Event::find()->top(),
+        ]);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     public function actionLogin()
