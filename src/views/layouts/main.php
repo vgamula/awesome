@@ -36,24 +36,13 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $categories = [];
-    foreach (Category::getDropDownArray('id', 'title', ['parentid' => 0]) as $id => $title) {
-        $categories[] = ['label' => $title, 'url' => ['/site/category', 'id' => $id]];
-    }
-    $vendors = [];
-    foreach (Vendor::getDropDownArray('id', 'title') as $id => $title) {
-        $vendors[] = ['label' => $title, 'url' => ['/site/vendor', 'id' => $id]];
-    }
     echo Nav::widget([
         'encodeLabels' => false,
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => FA::icon('home') . ' ' . Yii::t('app', 'Home'), 'url' => ['/site/index']],
-            ['label' => Yii::t('app', 'Categories'), 'items' => $categories],
-            ['label' => Yii::t('app', 'Vendors'), 'items' => $vendors],
             ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
             ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
-            Cart::widget(),
             ['label' => Yii::t('app', 'Administration'), 'visible' => !Yii::$app->user->isGuest, 'items' => [
                 ['label' => Yii::t('app', 'Orders'), 'url' => ['/orders/order']],
                 ['label' => Yii::t('app', 'Products'), 'url' => ['/catalog/product']],

@@ -54,11 +54,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Product::find(),
-            'pagination' => ['pageSize' => 4]
-        ]);
-        return $this->render('index', ['dataProvider' => $dataProvider]);
+        return $this->render('index');
     }
 
     public function actionLogin()
@@ -101,85 +97,5 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
-    }
-
-    /**
-     * View product
-     * @param $id
-     * @return string
-     */
-    public function actionProduct($id)
-    {
-        return $this->render('product', ['model' => $this->findProduct($id)]);
-    }
-
-    /**
-     * View vendor products
-     * @param $id
-     * @return string
-     * @throws NotFoundHttpException
-     */
-    public function actionVendor($id)
-    {
-        if (($model = Vendor::findOne($id)) === null) {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        }
-        $dataProvider = new ActiveDataProvider([
-            'query' => Product::find()->enabled()->byVendor($id),
-        ]);
-        return $this->render('vendor', [
-            'model' => $model,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * View category products
-     * @param $id
-     * @return string
-     * @throws NotFoundHttpException
-     */
-    public function actionCategory($id)
-    {
-        /** @var Category $model */
-        if (($model = Category::findOne($id)) === null) {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        }
-        $dataProvider = new ActiveDataProvider([
-            'query' => $model->getProducts()->enabled(),
-        ]);
-        return $this->render('category', [
-            'model' => $model,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function actionProducts()
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Product::find()->enabled(),
-        ]);
-        return $this->render('products', [
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Finds the Product model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Product the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findProduct($id)
-    {
-        if (($model = Product::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        }
     }
 }
