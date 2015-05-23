@@ -1,6 +1,7 @@
 <?php
 use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
+use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -11,7 +12,17 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?callback=initiali
 $this->registerJsFile('/js/gCalendar.js', ['depends' => 'app\assets\AppAsset']);
 
 $this->title = $model->name;
+$ownerLink = Html::a($model->owner->username, ['/user/view', 'id' => $model->userId]);
 
+$user = [];
+foreach ($model->users as $user) {
+    $users[] = Html::a($user->username, ['/user/view', 'id' => $user->id]);
+}
+if (empty($users)) {
+    $users = Yii::t('app', 'Empty');
+} else {
+    $users = implode(', </br>', $users);
+}
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Events'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -47,7 +58,27 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endif ?>
     </p>
 
-    <div class="event-dscr"> <?= $model->description ?> </div>
+    <div class="row">
+        <div class="col-md-3"> <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    [
+                        'label' => Yii::t('app', 'Owner'),
+                        'value' => $ownerLink,
+                        'format' => 'raw',
+                    ],
+                    'placeName',
+                    'start',
+                    'end',
+                    [
+                        'label' => Yii::t('app', 'Users'),
+                        'format' => 'raw',
+                        'value' => $users,
+                    ],
+                ],
+            ]) ?> </div>
+        <div class="col-md-9"> <?= $model->description ?></div>
+    </div>
 
 </div>
 

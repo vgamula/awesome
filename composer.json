@@ -24,22 +24,18 @@
     "yiisoft/yii2-bootstrap": "*",
     "yiisoft/yii2-swiftmailer": "*",
     "bower-asset/jquery": "~2.0 | ~1.10",
-    "bower-asset/readmore": "*",
     "voskobovich/yii2-many-many-behavior": "*",
     "nullref/yii2-useful": "dev-master",
     "mihaildev/yii2-ckeditor": "*",
     "mihaildev/yii2-elfinder": "*",
-    "omnilight/yii2-shopping-cart": "*",
     "rmrevin/yii2-fontawesome": "*",
     "newerton/yii2-fancybox": "dev-master",
     "yiisoft/yii2-jui": "@stable",
     "pheme/yii2-settings": "*",
     "wbraganca/yii2-fancytree-widget": "*",
     "nodge/yii2-eauth": "dev-master",
-    "philippfrenzel/yii2fullcalendar": "dev-master",
     "kartik-v/yii2-widget-datetimepicker": "dev-master",
-    "vlucas/phpdotenv": "~1.1@dev",
-    "unclead/yii2-multiple-input": "dev-master"
+    "vlucas/phpdotenv": "~1.1@dev"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
