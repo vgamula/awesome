@@ -128,17 +128,17 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getAuthKey()
     {
-        return $this->authKey;
+        throw new NotSupportedException();
     }
 
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        throw new NotSupportedException();
     }
 
-    public function validatePassword($password)
+    public function validatePassword()
     {
-        return $this->password === $password;
+        throw new NotSupportedException();
     }
 
     /**
