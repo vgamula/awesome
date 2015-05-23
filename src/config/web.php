@@ -34,8 +34,8 @@ $config = [
                 'google_oauth' => [
                     // register your app here: https://code.google.com/apis/console/
                     'class' => 'nodge\eauth\services\GoogleOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
+                    'clientId' => '723383549848-a2988ciq9d1jsie29v79seui32trsbko.apps.googleusercontent.com',
+                    'clientSecret' => 'm7HHgfCVZ9Uk1HYqUVv5Jog2',
                     'title' => 'Google (OAuth)',
                 ],
                 'facebook' => [
