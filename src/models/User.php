@@ -178,4 +178,16 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(Event::className(), ['id' => 'eventId'])
             ->viaTable('{{%user_has_events}}', ['userId' => 'id']);
     }
+
+    public function loadAvatar() {
+        if (!$this->email) {
+            return;
+        }
+        $defaultAvatar = Yii::$app->params['defaultAvatar'];
+        $size = Yii::$app->params['avatarSize'];
+        $grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($defaultAvatar) . "&s=" . $size;
+
+        $this->avatar = $grav_url;
+        $this->save();
+    }
 }

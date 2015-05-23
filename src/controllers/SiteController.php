@@ -134,6 +134,7 @@ class SiteController extends Controller
     {
         $model = Yii::$app->getUser()->identity;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->loadAvatar();
             return $this->redirect('index');
         } else {
             return $this->render('addEmail', [
