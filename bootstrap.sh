@@ -16,7 +16,7 @@ apt-get -y install mysql-server mysql-client libmysqlclient-dev
 mysql -e 'create database awesome;' --user=root --password=root
 
 #install php with apache
-apt-get -y install php5 libapache2-mod-php5 php5-mysql sendmail
+apt-get -y install php5 libapache2-mod-php5 php5-mysql sendmail php5-curl php5-intl php5-mcrypt
 
 #install composer
 curl -sS https://getcomposer.org/installer | php
